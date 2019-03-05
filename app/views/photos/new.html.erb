@@ -1,2 +1,13 @@
-<h1>Photos#new</h1>
-<p>Find me in app/views/photos/new.html.erb</p>
+<h2>Add a picture</h2>
+
+<%= simple_form_for [@friend, @photo] do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :picture,
+                required: true%>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Add another picture", name: "Add" %>
+    <%= f.button :submit, "Done" %>
+  </div>
+<% end %>

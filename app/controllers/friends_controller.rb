@@ -8,7 +8,7 @@ class FriendsController < ApplicationController
     a_hash["user_id"] = current_user.id
     @friend = Friend.new(a_hash)
     if @friend.save
-      redirect_to new_friend_photo(current_user)
+      redirect_to new_friend_photo_path(current_user)
     else
       render :new
     end
