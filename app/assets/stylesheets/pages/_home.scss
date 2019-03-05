@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align:center;
 }
 
 .banner h1 {
@@ -21,4 +22,8 @@
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.title-container {
+  padding-bottom: 10px;
 }
