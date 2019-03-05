@@ -4,7 +4,6 @@
   transition: all 0.3s ease;
   height: 70px;
   padding: 10px 30px;
-  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,7 +25,9 @@
 
 /* Right section */
 .navbar-wagon-right {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 /* Basic navbar item */
@@ -34,6 +35,15 @@
   cursor: pointer;
   padding: 0 20px;
 }
+
+.navbar-fixed {
+  position: fixed;
+}
+
+.navbar-wagon-link.navbar-links-not-home {
+  color: gray;
+}
+
 
 /* Navbar link */
 .navbar-wagon-link {
