@@ -5,4 +5,5 @@ class Friend < ApplicationRecord
   has_many :reviews, through: :friendships
 
   validates :large_description, :location, :price_per_day, presence: true
+  validates :user_id, uniqueness: true
 end

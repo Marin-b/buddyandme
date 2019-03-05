@@ -1,0 +1,18 @@
+<h2>Tell us more about you</h2>
+
+<%= simple_form_for(@friend) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :location,
+                required: true%>
+    <%= f.label :large_description %>
+    <br>
+    <%= f.text_area :large_description,
+                required: true %>
+    <%= f.input :price_per_day,
+                required: true %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Become friendly!" %>
+  </div>
+<% end %>

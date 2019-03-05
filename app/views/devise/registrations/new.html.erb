@@ -7,6 +7,12 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
+    <%= f.input :avatar %>
+    <%= f.input :avatar_cache, as: :hidden %>
+    <%= f.input :first_name,
+                required: true %>
+    <%= f.input :last_name,
+                required: true %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -14,14 +20,10 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :first_name,
-                required: true %>
-    <%= f.input :last_name,
-                required: true %>
+    <%= f.input :birth_date, as: :date, html5: true %>
     <%= f.label :language %>
     <%= f.select :language, %w(english french dutch spanish italian german japanese) %>
     <br>
-    <%= f.input :birth_date, as: :date, html5: true %>
     <%= f.label :short_description %>
     <%= f.text_area :short_description,
                 required: true %>
