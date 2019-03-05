@@ -14,6 +14,10 @@ class FriendsController < ApplicationController
     end
   end
 
+  def index
+    @friends = Friend.all
+  end
+
   private
 
   def set_params
