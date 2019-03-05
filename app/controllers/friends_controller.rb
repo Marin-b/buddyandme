@@ -18,9 +18,14 @@ class FriendsController < ApplicationController
     @friends = Friend.all
   end
 
+  def show
+    @friend = Friend.find(params[:id])
+    @user_friend = User.find(@friend.user_id)
+  end
+
   private
 
   def set_params
-    params.require(:friend).permit(:large_description, :location, :price_per_day)
+    params.require(:friend).permit(:large_description, :location, :price_per_hour)
   end
 end
