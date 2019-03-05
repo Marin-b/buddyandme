@@ -4,6 +4,6 @@ class Friend < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :reviews, through: :friendships, dependent: :destroy
 
-  validates :large_description, :location, :price_per_day, presence: true
+  validates :large_description, :location, :price_per_hour, presence: true
   validates :user_id, uniqueness: true
 end
