@@ -43,14 +43,10 @@
       <br>
       <%= f.text_area :short_description,
                   required: true, wrapper_html: {class: "around"} %>
-
+      <br>
+      <%= f.submit "Sign me up!", class: "btn btn-danger" %>
+    <% end %>
     </div>
 
-      <div class="form-actions">
-        <a href="">
-          <button type="button" class="btn btn-danger">Log me in!</button>
-        </a>
-      </div>
-      </div>
-  <% end %>
+  </div>
 

@@ -16,13 +16,9 @@
                     input_html: { autocomplete: "current-password" },
                     label: "My Password" %>
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <br>
+        <%= f.submit "Log me in!", class: "btn btn-danger" %>
       </div>
-
-        <div class="form-actions">
-          <a href="">
-            <button type="button" class="btn btn-danger">Log me in!</button>
-          </a>
-        </div>
     <% end %>
 
     <div class="loginlinks">

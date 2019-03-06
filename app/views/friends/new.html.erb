@@ -11,14 +11,8 @@
         <%= f.input :large_description,
                       required: true, label: "Some fun things I like to do are:", input_html: {class: "textarea"}, wrapper_html: {class: "around"} %>
         <%= f.input :price_per_hour,
-                    required: true, wrapper_html: {class: "around"}, label: "Per hour I will charge:" %>
-      </div>
-      <div class="form-actions">
-        <a href="">
-          <button type="button" class="btn btn-danger">Become friendly!</button>
-        </a>
-
-       <!-- <%= f.button :submit, "Become friendly!" %> -->
+                    required: true, wrapper_html: {class: "around"}, label: "Per hour I will charge:" %>`
+        <%= f.submit "Become friendly!", class: "btn btn-danger" %>
       </div>
     <% end %>
   </div>
