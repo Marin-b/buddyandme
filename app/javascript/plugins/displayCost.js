@@ -21,6 +21,7 @@ visuPrice.addEventListener('click', (event) => {
   }
   else {
     displayCost.innerHTML = "Please fill the form correctly"
+    submitBtn.classList.add("hidden")
   }
 
 })

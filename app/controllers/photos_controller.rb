@@ -5,12 +5,11 @@ class PhotosController < ApplicationController
   end
 
   def create
+    redirect_to new_friend_photo_path(current_user) if params[:photo].nil?
     @photo = Photo.new(set_params)
     @photo.friend_id = current_user.friend.id
     if @photo.save
-      params["commit"] == "Done" ? (redirect_to root_path) : (redirect_to new_friend_photo_path(current_user))
-    else
-      render :new
+      params["commit"] == "Done" ? (redirect_to friend_path(current_user.friend)) : (redirect_to new_friend_photo_path(current_user))
     end
   end
 

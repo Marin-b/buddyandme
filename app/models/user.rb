@@ -7,8 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # validates :first_name, :last_name, :birth_date, :short_description, presence: true
-  # validates :language, inclusion: { in: %w(english french dutch spanish italian german japanese) }
+  validates :first_name, :last_name, :birth_date, :short_description, presence: true
+  validates :language, inclusion: { in: %w(english french dutch spanish italian german japanese) }
   after_create :assign_avatar
 
   def assign_avatar
