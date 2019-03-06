@@ -17,7 +17,7 @@ Friendship.destroy_all
 
 
 puts "Creating users & friends "
-user1 = User.create!(email: "cool@gmail.com", first_name: "Harry", last_name: "Black", language: "English", password: 131415)
+user1 = User.create!(email: "cool@gmail.com", first_name: "Harry", last_name: "Black", language: "english", password: 131415)
 friend1 = Friend.create!(large_description: "The coolest guy in town", location: "Barcelona, Gracia", price_per_hour: 45, user: user1)
 
 user2 = User.create!(email: "dope@gmail.com", first_name: "Betty", last_name: "Ford", language: "Spanish", password: 34290890)
