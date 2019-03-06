@@ -4,9 +4,8 @@ class FriendsController < ApplicationController
   end
 
   def create
-    a_hash = set_params
-    a_hash["user_id"] = current_user.id
-    @friend = Friend.new(a_hash)
+    @friend = Friend.new(set_params)
+    @friend.user_id = current_user.id
     if @friend.save
       redirect_to new_friend_photo_path(current_user)
     else
@@ -15,7 +14,8 @@ class FriendsController < ApplicationController
   end
 
   def index
-    @friends = Friend.all
+    friends = Friend.joins(:user).where('users.language = ?', params[:option].downcase)
+    @friends = friends.near(params[:location], 10)
   end
 
   def show
