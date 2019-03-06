@@ -1,18 +1,25 @@
-<h2>Tell us more about you</h2>
 
-<%= simple_form_for(@friend) do |f| %>
-  <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.input :location,
-                required: true%>
-    <%= f.label :large_description %>
-    <br>
-    <%= f.text_area :large_description,
-                required: true %>
-    <%= f.input :price_per_hour,
-                required: true %>
+<div class="container">
+  <div class="becomefriend">
+    <h2>Tell us more about you</h2>
+
+    <%= simple_form_for(@friend) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :location,
+                    required: true, wrapper_html: {class: "around"}, label: "You can find me here:" %>
+        <%= f.input :large_description,
+                      required: true, label: "Some fun things I like to do are:", input_html: {class: "textarea"}, wrapper_html: {class: "around"} %>
+        <%= f.input :price_per_hour,
+                    required: true, wrapper_html: {class: "around"}, label: "Per hour I will charge:" %>
+      </div>
+      <div class="form-actions">
+        <a href="">
+          <button type="button" class="btn btn-danger">Become friendly!</button>
+        </a>
+
+       <!-- <%= f.button :submit, "Become friendly!" %> -->
+      </div>
+    <% end %>
   </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Become friendly!" %>
-  </div>
-<% end %>
+</div>
