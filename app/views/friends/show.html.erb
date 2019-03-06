@@ -1,16 +1,42 @@
-<div style="padding-top: 60px;"></div>
-<div class="banner-show">
-  <div class="avatr" style="background-image: url('<%= cl_image_path @user_friend.avatar.url %>')">
+
+<div class="container">
+  <div class="main-flexbox">
+    <!--     <div class="banner-show"> -->
+      <div class="first-flex-text">
+        <div class="mini-flexbox-name">
+          <h1 class="first-name-space"><%= @user_friend.first_name %> </h1>
+          <h1> <%= @user_friend.last_name %> </h1>
+        </div>
+        <p> <%= @friend.large_description %></p>
+      </div>
+      <div class="flex-item-2">
+
+        <%= cl_image_tag @user_friend.avatar.url %>
+      </div>
+      <div class="container" style="flex: 50%">
+        <div class="row">
+     <!--    <div class="avatr" style="background-image: url('<%= cl_image_path @user_friend.avatar.url %>')">
+     </div> -->
+     <% @friend.photos.each do |photo| %>
+     <div class="col-xs-12 col-sm-4 col-lg-3">
+      <%= cl_image_tag photo.picture, height: 100,width: 200,  crop: :fill %>
+      <% end %>
+    </div>
   </div>
-  <div class="flexbox-show">
-    <% @friend.photos.each do |photo| %>
-      <%= cl_image_tag photo.picture, height: 200;%>
-    <% end %>
-  </div>
+</div>
+</div>
+<%= link_to 'Meet with this friend', new_friend_friendship_path(@friend) %>
+</div>
 
 </div>
-<h1><%= @user_friend.first_name %></h1>
-<h1><%= @user_friend.last_name %></h1>
-<p> <%= @friend.large_description %></p>
 
-<%= link_to 'Meet with this friend', new_friend_friendship_path(@friend) %>
+
+
+
+
+
+
+
+
+<!-- </div>
+</div> -->
