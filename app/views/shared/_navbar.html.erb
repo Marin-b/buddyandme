@@ -1,7 +1,7 @@
 <div class="navbar-wagon <%= 'navbar-fixed' if home_page? %>">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
+    <%= image_tag "https://cdn0.iconfinder.com/data/icons/happy-man-human-resource-and-life-style-set-1/91/Happy_Man_Human_Resource__Life_Style_02-512.png", height: 50 %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -19,7 +19,7 @@
           <div class="avatar" style="background-image: url('<%= cl_image_path current_user.avatar.url(:avatar) %>')"  id = "navbar-wagon-menu" data-toggle = "dropdown"></div>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to profile_path do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
