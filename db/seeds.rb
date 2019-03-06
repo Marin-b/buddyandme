@@ -6,19 +6,33 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.new([{email: "cool@gmail.com"}, {first_name: "Harry"}, {last_name: "Black"}, {language: "English"}])
-friend1 = Friend.new([{large_description: "The coolest guy in town"}, {location: "Gracia"}, {price_per_hour: 45}, {user: user1}])
+puts "destroying all users"
+User.destroy_all
 
-user2 = User.new([{email: "dope@gmail.com"}, {first_name: "Betty"}, {last_name: "Ford"}, {language: "Spanish"}])
-friend2 = Friend.new([{large_description: "Bottoms up with Betty. Yeah"}, {location: "Raval"}, {price_per_hour: 45}, {user: user2}])
+puts "destroying all friends"
+Friend.destroy_all
 
-user3 = User.new([{email: "hot@gmail.com"}, {first_name: "Mary"}, {last_name: "Kardashian"}, {language: "Spanish"}])
-friend3 = Friend.new([{large_description: "Nothing to complain about"}, {location: "Poble Nou"}, {price_per_hour: 105}, {user: user3}])
+puts "destroying all friendships"
+Friendship.destroy_all
 
-user4 = User.new([{email: "crazy@gmail.com"}, {first_name: "Nick"}, {last_name: "Fou"}, {language: "French"}])
-friend4 = Friend.new([{large_description: "An unforgetable experience starts with Nick"}, {location: "Sitges"}, {price_per_hour: 35},{ user: user4}])
 
-friendship1 = Friendship.new([{total_price: 200 }, {status: "approved" }, {start_date: 11/05/2019}, {end_date: 12/05/2019 }, {start_hour: 1230}, {end_hour: 1600}, {user: user1}, {friend: friend1}])
+puts "Creating users & friends "
+user1 = User.create!(email: "cool@gmail.com", first_name: "Harry", last_name: "Black", language: "English", password: 131415)
+friend1 = Friend.create!(large_description: "The coolest guy in town", location: "Barcelona, Gracia", price_per_hour: 45, user: user1)
+
+user2 = User.create!(email: "dope@gmail.com", first_name: "Betty", last_name: "Ford", language: "Spanish", password: 34290890)
+friend2 = Friend.create!(large_description: "Bottoms up with Betty. Yeah", location: "Barcelona, Raval", price_per_hour: 45, user: user2)
+
+user3 = User.create!(email: "hot@gmail.com", first_name: "Mary", last_name: "Kardashian", language: "Spanish", password: 5490822)
+friend3 = Friend.create!(large_description: "Nothing to complain about", location: "Barcelona, Poble Nou", price_per_hour: 105, user: user3)
+
+user4 = User.create!(email: "crazy@gmail.com", first_name: "Nick", last_name: "Fou", language: "French", password: 2323232323)
+friend4 = Friend.create!(large_description: "An unforgetable experience starts with Nick", location: "Sitges", price_per_hour: 35, user: user4)
+
+puts "Creating friendships"
+friendship1 = Friendship.create!(total_price: 200, status: "approved", start_date: "11/05/2019", end_date: "12/05/2019", start_hour: 1300, end_hour: 1600, user: user1, friend: friend1)
+
+puts "Seeding done!"
 
 
 
