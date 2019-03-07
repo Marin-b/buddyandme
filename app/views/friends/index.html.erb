@@ -1,6 +1,7 @@
 <div class="flexbox">
   <% @friends.each do |friend| %>
   <%= link_to friend_path(friend) do %>
+  <h1>more</h1>
     <div class="cards">
       <div class="picture" style="background-image: url('<%= cl_image_path User.find(friend.user_id).avatar.url %>')">
       </div>
