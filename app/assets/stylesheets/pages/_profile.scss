@@ -16,39 +16,83 @@
 .profile {
   min-width: 40vw;
   text-align:center;
-  border: 2px black solid;
+  background-color: white;
   padding: 20px;
   margin-right: 20px;
-  border-radius: 20px;
+  border-radius: 5px;
+  box-shadow: -1px 0px 16px -1px rgba(219,215,219,1);
 }
 
 .friend {
   min-width: 40vw;
-  border: 2px black solid;
+  background-color: white;
   padding: 20px;
   margin-left: 20px;
-  border-radius: 20px;
+  border-radius: 5px;
+  box-shadow: -1px 0px 16px -1px rgba(219,215,219,1);
 }
 .card-profile-photo {
   height: 200px;
   width: 200px;
   background-size:cover;
   background-position: center;
+  margin: 15px;
+  box-shadow: 3px 4px 12px -5px rgba(0,0,0,0.75);
 }
+
+.description {
+  padding: 20px;
+}
+
+.card-booking {
+  padding: 15px;
+  background-color: rgba(234, 240, 242, 0.7);
+}
+
 
 .bookings {
   width: 85vw;
-  border: 2px black solid;
+  background-color: white;
   padding: 20px;
   margin-top: 40px;
-  border-radius: 20px;
   margin: 0px auto;
+  border-radius: 5px;
+  box-shadow: -1px 0px 16px -1px rgba(219,215,219,1);
 }
+
+.acceptbutton {
+  padding: 5px 10px;
+  background-color: #3E9075;
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
+.acceptbutton:hover {
+  opacity: 1;
+}
+
+.declinebutton {
+  padding: 5px 10px;
+  background-color: #E93732;
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
+.declinebutton:hover {
+  opacity: 1;
+}
+
 .card-flexbox {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
 .green-text {
   color: $green;
 }

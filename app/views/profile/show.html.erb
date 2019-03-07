@@ -5,29 +5,45 @@
       <h2> Your profile</h2>
       <div class="profile-avatar" style="background-image: url('<%= cl_image_path current_user.avatar.url %>')">
       </div>
-      <div class="full-name">
+      <div class="full-name-age">
         <h2>
           <%= @user.first_name %>
-          <%= @user.last_name  %>
+          <%= @user.last_name  %>,
+           <%= @user.age  %>
         </h2>
       </div>
       <div class="description">
-        <%= @user.short_description %>
+       <h4> My tagline:  <%= @user.short_description %> </h4>
+      </div>
+      <div class="edit-profile">
+        <%= link_to "Edit my profile", edit_user_registration_path %>
       </div>
     </div>
 
     <div class="friend">
       <h2> Your Friend profile</h2>
+      <div class="row">
       <% if (@friend) %>
 
         <% @friend.photos.each do |photo| %>
+        <div class="col-xs-12 col-sm-6">
           <div class="card-profile-photo" style="background-image: url('<%= cl_image_path photo.picture.url %>')">
           </div>
+        </div>
         <% end %>
-        <p><%= @friend.large_description %></p>
+        </div>
+          <div class="description">
+          <h4><%= @friend.large_description %></h4>
+          <p>📍 My location is <%= @friend.location %>        , Price per hour is € <%= @friend.price_per_hour %> 💰 </p>
+            <div class="edit-description">
+            <%= link_to "Edit my description", edit_friend_path(@friend) %>
+            </div>
+          </div>
       <% else %>
+        <div>
         <h3> You don't have a friend profile yet</h3>
         <%= link_to "Become friendly now!", new_friend_path %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -39,22 +55,44 @@
       <% @user.friendships.each do |friendship| %>
         <% the_friend = User.find(Friend.find(friendship.friend_id).user_id) %>
         <div class="card-booking">
-          <h3>
-            <%= the_friend.full_name %>
-          </h3>
           <div class="card-flexbox">
+            <div>
+              <h4>
+                Asking for a friendship with:
+              </h4>
+              <h4>
+                <%= the_friend.full_name %>
+              </h4>
+            </div>
             <h4>
-              <%= friendship.start_datetime %>
+              From: <%=friendship.start_hour%>:00 <%= Date.parse(friendship.start_datetime.to_s).strftime("%d/%m/%Y") %> <br> Until:  <%=friendship.end_hour%>:00 <%= Date.parse(friendship.end_datetime.to_s).strftime("%d/%m/%Y") %>
             </h4>
+
             <h4>
-              <%= friendship.end_datetime %>
+              Price: € <%= friendship.total_price %>
             </h4>
-            <h4>
-              <%= friendship.total_price %>
-            </h4>
-            <h4>
-              <%= friendship.status %>
-            </h4>
+
+            <div class="friendship-status">
+              <% if friendship.status == "Pending" %>
+                <h4 class="grey-text">
+                  Status: <%= friendship.status %>
+                </h4>
+              <% elsif friendship.status == "Accepted" %>
+                <h4 class="green-text">
+                  Status: <%= friendship.status %>
+                </h4>
+              <% elsif friendship.status == "Declined" %>
+                <h4 class="red-text">
+                  Status: <%= friendship.status %>
+                </h4>
+              <% elsif friendship.status == "Completed" %>
+                <h4 class="orange-text">
+                  Status: <%= friendship.status %>
+                </h4>
+                <%= link_to "Write a review" %>
+              <% end %>
+            </div>
+            </div>
             <%=  link_to destroy_friendship_path(friendship) do %>
               <i class="far fa-times-circle"></i>
             <% end %>
@@ -62,7 +100,7 @@
         </div>
         <hr>
       <% end %>
-    </div>
+
 
 
     <div class="friend-bookings">
@@ -70,35 +108,37 @@
       <% @user.friend.friendships.each do |friendship| %>
         <% the_friend = User.find(friendship.user_id) %>
         <div class="card-booking">
-          <h3>
-            <%= the_friend.full_name %>
-          </h3>
           <div class="card-flexbox">
+            <div>
+              <h4>
+                Hosting a friendship for:
+              </h4>
+              <h4>
+                <%= the_friend.full_name %>
+              </h4>
+            </div>
             <h4>
-              <%= friendship.start_datetime %>
+              From: <%=friendship.start_hour%>:00 <%= Date.parse(friendship.start_datetime.to_s).strftime("%d/%m/%Y") %> <br> Until:  <%=friendship.end_hour%>:00 <%= Date.parse(friendship.end_datetime.to_s).strftime("%d/%m/%Y") %>
             </h4>
             <h4>
-              <%= friendship.end_datetime %>
-            </h4>
-            <h4>
-              <%= friendship.total_price %>
+              Price: € <%= friendship.total_price %>
             </h4>
             <div class="friendship-status">
               <% if friendship.status == "Pending" %>
-                <h4 class="grey-text">
-                  <%= friendship.status %>
+                <h4 class="greyer-text">
+                  Status: <%= friendship.status %>
                 </h4>
                 <div class="status-buttons">
-                  <%= link_to "Accept", accept_path(friendship) %>
-                  <%= link_to "Decline", decline_path(friendship) %>
+                  <%= link_to "Accept", accept_path(friendship), class: "acceptbutton" %>
+                  <%= link_to "Decline", decline_path(friendship), class: "declinebutton" %>
                 </div>
               <% elsif friendship.status == "Accepted" %>
                 <h4 class="green-text">
-                  <%= friendship.status %>
+                  Status: <%= friendship.status %>
                 </h4>
               <% elsif friendship.status == "Declined" %>
                 <h4 class="red-text">
-                  <%= friendship.status %>
+                  Status: <%= friendship.status %>
                 </h4>
               <% end %>
             </div>

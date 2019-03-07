@@ -21,6 +21,10 @@ def age
     end
   end
 
+  def age
+    ((Time.zone.now - birth_date.to_time) / 1.year.seconds).floor
+  end
+
   def full_name
     self.first_name + " " + self.last_name
   end
