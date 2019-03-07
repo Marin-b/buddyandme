@@ -22,9 +22,10 @@
   </div>
 </div>
 
-
 <div class="parent-container">
-  <div class="container">
+  <div class="left-content">
+
+
     <div class="left-description-section">
       <div class="about-section">
         <h4>About</h4>
@@ -36,10 +37,16 @@
         </p>
       </div>
     </div>
+    <div class="container-map">
+      <div class="map-image" col-sm-7 offset  >
+      </div>
+    </div>
+
+
   </div>
 
 
-  <div class="container">
+
     <div class="right-booking">
       <div class="booking-box">
         <h4>
@@ -47,52 +54,26 @@
         </h4>
         <div class="booking-description-section">
           <div class="description-left">
-            <ul class="list-inline">
+            <ul class="list-inline bottom-list">
               <li>
-                <h5>$$$......</h5>
+                <h5>$$$....</h5>
               </li>
               <li>
                 <h5>Per Hour</h5>
               </li>
             </ul>
-           </div>
-         </div>
-         <%= link_to "Book Friend", "#", class: "btn btn-flat" %>
-       </div>
-     </div>
-   </div>
- </div>
+          </div>
+        </div>
+        <%= link_to "Book Friend", new_friend_friendship_path(@friend), class: "btn btn-flat" %>
+      </div>
+  </div>
+
 </div>
 
 
-<!--   <div class="main-flexbox">
 
-    <div class="first-flex-text">
 
-      <div class="mini-flexbox-name">
 
-        <h2 class="first-name-space"><%= @user_friend.first_name %></h2>
 
-        <h2> <%= @user_friend.last_name %> </h2>
-      </div>
-      <p><strong>Short Description</strong>
-        <%= @user_friend.short_description %></p>
-        <p><strong>Long Description</strong>
-          <p><%= @friend.large_description %></p>
-    </div>
 
-        <div class="flex-item-2">
-          <%= cl_image_tag @user_friend.avatar.url %>
-        </div>
 
-        <div class="container" id="image-block">
-          <div class="row">
-           <% @friend.photos.each do |photo| %>
-            <%= cl_image_tag photo.picture, height: 100, width: 200,  crop: :fill %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <%= link_to 'Meet with this friend', new_friend_friendship_path(@friend) %>
-  </div> -->
