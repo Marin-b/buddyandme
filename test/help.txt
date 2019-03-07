@@ -1,0 +1,11 @@
+<%= @user_friend.first_name %>
+<%= @user_friend.last_name %>
+<%= @user_friend.short_description %>
+
+<%= @friend.large_description %>
+<%= cl_image_tag @user_friend.avatar.url %>
+
+<% @friend.photos.each do |photo| %>
+<%= cl_image_tag photo.picture, height: 100, width: 200,  crop: :fill %>
+<% end %>
+<%= link_to 'Meet with this friend', new_friend_friendship_path(@friend) %>

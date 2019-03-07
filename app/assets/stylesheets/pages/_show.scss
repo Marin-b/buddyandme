@@ -62,6 +62,7 @@
   margin-left: 15px;
   margin-right: 10px;
   box-shadow: 9px 13px 16px -10px rgba(0,0,0,0.48);
+  text-align: center
 }
 
 .right-image{
@@ -82,20 +83,20 @@ h5 {
 
 .absolute{
   position: relative;
-    #age-stars{
+  #age-stars{
     padding-left: 10px;
     left : 10px;
     bottom: 10px;
     justify-content: space-between;
     align-items: flex-end;
     position: absolute;
-}
+  }
 }
 
 .card-category {
   background-size: cover;
   background-position: center;
-  height: 180px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,23 +108,104 @@ h5 {
 }
 
 .parent-container{
-  display:flex;
+  padding: 0px 115px;
+  display: flex;
 }
 
 .right-booking {
+  height: 100%;
+  margin-top: 40px;
   background-color: #ffffff;
   padding-top: 40px;
   padding-bottom: 40px;
   padding-left: 40px;
   padding-right: 40px;
   border-radius: 8px;
-  position: sticky !important;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  text-align: center;
 }
 
 .container {
   margin-top: 40px;
 }
 
+.bottom-list {
+  margin-bottom: 40px;
+}
 
+
+.container-map{
+  display: flex;
+}
+
+.map-image{
+  display: flex;
+  height: 400px;
+  width: 72%;
+  background-color: blue;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  // position: center;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.left-content {
+  margin-top: 20px;
+  flex-grow: 1;
+}
+
+
+// reviews section
+.avatar-large {
+  width: 56px;
+  border-radius: 50%;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+}
+
+.notification .notification-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.notification p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.notification small {
+  color: #999999;
+  font-weight: bold;
+}
+.notification .notification-actions {
+  opacity: 0;
+  display: flex;
+  transition: ease .3s;
+}
+
+.notification:hover .notification-actions {
+  opacity: 1;
+}
+
+.notification .notification-actions a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.notification .notification-actions a:hover {
+  color: #555555;
+}
 
 
