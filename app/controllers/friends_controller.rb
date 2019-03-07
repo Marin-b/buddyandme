@@ -15,7 +15,7 @@ class FriendsController < ApplicationController
 
   def index
     if params[:location] && params[:option]
-      friends = Friend.joins(:user).where('users.language = ?', params[:option].downcase)
+      params[:option] == "All" ? friends = Friend.all : friends = Friend.joins(:user).where('users.language = ?', params[:option].downcase)
       @friends = friends.near(params[:location], 10)
     else
       @friends = Friend.all
