@@ -9,7 +9,7 @@
 
     <div class="searchbar">
       <%= form_tag((friends_path), method: "get", :html => {class: "form-inline" }) do %>
-        <%= text_field_tag :location, "City",id: "location-field" %>
+        <%= text_field_tag :location, nil, :placeholder => "city", id: "location-field" %>
         <%= select_tag(:option, options_for_select(%w(english french dutch spanish italian german japanese).map { |x| x.capitalize }, params[:option] ))  %>
         <%= submit_tag 'Search', class: "btn btn-danger" %>
       <% end %>
