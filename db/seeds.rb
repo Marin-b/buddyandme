@@ -30,7 +30,7 @@ user4 = User.create!(email: "crazy@gmail.com", first_name: "Nick", last_name: "F
 friend4 = Friend.create!(large_description: "An unforgetable experience starts with Nick", location: "Sitges", price_per_hour: 35, user: user4)
 
 puts "Creating friendships"
-friendship1 = Friendship.create!(total_price: 200, status: "approved", start_date: "11/05/2019", end_date: "12/05/2019", start_hour: 1300, end_hour: 1600, user: user1, friend: friend1)
+friendship1 = Friendship.create!(total_price: 200, status: "Pending", start_date: "11/05/2019", end_date: "12/05/2019", start_hour: 1300, end_hour: 1600, user: user1, friend: friend1)
 
 puts "Seeding done!"
 
