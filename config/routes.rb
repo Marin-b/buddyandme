@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :photos, only: [:new, :create]
     resources :friendships, only: [:new, :create]
   end
+  resources :friendships, only: [] do
+    resources :reviews, only: [:new, :create, :delete]
+  end
   get "delete_friendship/:id", to: "friendships#destroy", as: :destroy_friendship
   get "profile", to: "profile#show", as: :profile
   get "accept/:id", to: "friendships#accept", as: :accept
