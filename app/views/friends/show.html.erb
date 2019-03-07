@@ -20,6 +20,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 
@@ -57,7 +58,7 @@
             </ul>
            </div>
          </div>
-         <%= link_to "Book Friend", "#", class: "btn btn-flat" %>
+         <%= link_to "Book Friend", new_friend_friendship_path(@friend), class: "btn btn-flat" %>
        </div>
      </div>
    </div>
@@ -94,5 +95,6 @@
         </div>
       </div>
     </div>
-    <%= link_to 'Meet with this friend', new_friend_friendship_path(@friend) %>
+      <%= link_to 'Book this friend', new_friend_friendship_path(@friend) %>
   </div> -->
+

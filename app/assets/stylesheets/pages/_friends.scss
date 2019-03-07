@@ -1,20 +1,33 @@
+.container-paulus {
+  width: 1000px;
+  margin: 0 auto;
+  }
+
 .cards {
-  height: 500px;
-  width: 300px;
+  height: 420px;
+  width: 100%;
   box-shadow: 0px 4px 22px -5px rgba(0,0,0,0.75);
-  margin: 20px;
-  .picture {
-    height: 60%;
+  margin-top: 20px;
+  background-color: rgb(240,240,240);
+}
+.picture {
+    height: 250px;
     width: 100%;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     padding: 10px;
-  }
-  a {
+}
+a {
     text-decoration: none;
     color: black;
-  }
-  a:hover {
+}
+a:hover {
     text-decoration: none;
-  }
+}
+.cards h4 {
+  text-align: center;
+}
+.cards p {
+  text-align: center;
+  color: gray;
 }

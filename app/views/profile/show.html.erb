@@ -1,22 +1,111 @@
 <div class="wrapper">
   <div class="container">
-    <div class="card">
-      <div class="profile">
-        <div class="profile-avatar" style="background-image: url('<%= cl_image_path current_user.avatar.url %>')">
-        </div>
-      </div>
 
-      <div class="friend">
+    <div class="profile">
+      <h2> Your profile</h2>
+      <div class="profile-avatar" style="background-image: url('<%= cl_image_path current_user.avatar.url %>')">
       </div>
+      <div class="full-name">
+        <h2>
+          <%= @user.first_name %>
+          <%= @user.last_name  %>
+        </h2>
       </div>
+      <div class="description">
+        <%= @user.short_description %>
+      </div>
+    </div>
 
-      <div class="overview">
-        <div class="full-name">
-          <h2>
-            <%= @user.first_name %>
-           <%= @user.last_name  %>
-          </h2>
+    <div class="friend">
+      <h2> Your Friend profile</h2>
+      <% if (@friend) %>
+
+        <% @friend.photos.each do |photo| %>
+          <div class="card-profile-photo" style="background-image: url('<%= cl_image_path photo.picture.url %>')">
+          </div>
+        <% end %>
+        <p><%= @friend.large_description %></p>
+      <% else %>
+        <h3> You don't have a friend profile yet</h3>
+        <%= link_to "Become friendly now!", new_friend_path %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="bookings">
+    <div class="user-bookings">
+      <h2>Wanted friendships</h2>
+      <% @user.friendships.each do |friendship| %>
+        <% the_friend = User.find(friendship.user_id) %>
+        <div class="card-booking">
+          <h3>
+            <%= the_friend.full_name %>
+          </h3>
+          <div class="card-flexbox">
+            <h4>
+              <%= friendship.start_datetime %>
+            </h4>
+            <h4>
+              <%= friendship.end_datetime %>
+            </h4>
+            <h4>
+              <%= friendship.total_price %>
+            </h4>
+            <h4>
+              <%= friendship.status %>
+            </h4>
+            <%=  link_to destroy_friendship_path(friendship) do %>
+              <i class="far fa-times-circle"></i>
+            <% end %>
+          </div>
         </div>
-      </div>
+        <hr>
+      <% end %>
+    </div>
+
+
+    <div class="friend-bookings">
+      <h2>Hosted friendships</h2>
+      <% @user.friend.friendships.each do |friendship| %>
+        <% the_friend = User.find(friendship.user_id) %>
+        <div class="card-booking">
+          <h3>
+            <%= the_friend.full_name %>
+          </h3>
+          <div class="card-flexbox">
+            <h4>
+              <%= friendship.start_datetime %>
+            </h4>
+            <h4>
+              <%= friendship.end_datetime %>
+            </h4>
+            <h4>
+              <%= friendship.total_price %>
+            </h4>
+            <div class="friendship-status">
+              <% if friendship.status == "Pending" %>
+                <h4 class="grey-text">
+                  <%= friendship.status %>
+                </h4>
+                <div class="status-buttons">
+                  <%= link_to "Accept", accept_path(friendship) %>
+                  <%= link_to "Decline", decline_path(friendship) %>
+                </div>
+              <% elsif friendship.status == "Accepted" %>
+                <h4 class="green-text">
+                  <%= friendship.status %>
+                </h4>
+              <% elsif friendship.status == "Declined" %>
+                <h4 class="red-text">
+                  <%= friendship.status %>
+                </h4>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+    </div>
   </div>
 </div>
