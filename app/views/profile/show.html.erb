@@ -37,7 +37,7 @@
     <div class="user-bookings">
       <h2>Wanted friendships</h2>
       <% @user.friendships.each do |friendship| %>
-        <% the_friend = Friend.find(friendship.friend_id).user %>
+        <% the_friend = User.find(friendship.user_id) %>
         <div class="card-booking">
           <h3>
             <%= the_friend.full_name %>
@@ -68,7 +68,7 @@
     <div class="friend-bookings">
       <h2>Hosted friendships</h2>
       <% @user.friend.friendships.each do |friendship| %>
-        <% the_friend = Friend.find(friendship.friend_id).user %>
+        <% the_friend = User.find(friendship.user_id) %>
         <div class="card-booking">
           <h3>
             <%= the_friend.full_name %>
