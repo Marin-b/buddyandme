@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :photos, only: [:new, :create]
     resources :friendships, only: [:new, :create]
   end
+  resources :friendships, only: [] do
+    resources :reviews, only: [:new, :create, :delete]
+    end
   get "profile", to: "profile#show", as: :profile
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
