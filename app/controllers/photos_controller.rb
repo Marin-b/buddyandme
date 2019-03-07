@@ -10,7 +10,14 @@ class PhotosController < ApplicationController
     @photo.friend_id = current_user.friend.id
     if @photo.save
       params["commit"] == "Done" ? (redirect_to friend_path(current_user.friend)) : (redirect_to new_friend_photo_path(current_user))
+    else
+      render :new
     end
+  end
+
+  def destroy
+    @photo.find(params[:id])
+    @photo.destroy
   end
 
   private

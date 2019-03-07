@@ -28,8 +28,15 @@ class FriendsController < ApplicationController
   end
 
   def update
-
+    @friend = Friend.find(params[:id])
+    @friend.update(set_params)
+    if @friend.save
+      redirect_to profile_path
+    else
+      render :edit
+    end
   end
+
   private
 
   def set_params
