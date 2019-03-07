@@ -1,33 +1,100 @@
 
-<div class="container">
-  <div class="main-flexbox">
-    <!--     <div class="banner-show"> -->
-      <div class="first-flex-text">
-        <div class="mini-flexbox-name">
-          <h1 class="first-name-space"><%= @user_friend.first_name %> </h1>
-          <h1> <%= @user_friend.last_name %> </h1>
-        </div>
-        <p> <%= @friend.large_description %></p>
+<div class="banner-container">
+  <div class="left-image">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <div>
+        <h3 class="name-space">Hi, my name is </h3>
+        <h4><%= @user_friend.first_name %> <%= @user_friend.last_name%></h4>
       </div>
-      <div class="flex-item-2">
-
-        <%= cl_image_tag @user_friend.avatar.url %>
-      </div>
-      <div class="container" style="flex: 50%">
-        <div class="row">
-     <!--    <div class="avatr" style="background-image: url('<%= cl_image_path @user_friend.avatar.url %>')">
-     </div> -->
-     <% @friend.photos.each do |photo| %>
-     <div class="col-xs-12 col-sm-4 col-lg-3">
-      <%= cl_image_tag photo.picture, height: 100,width: 200,  crop: :fill %>
-      <% end %>
     </div>
   </div>
+  <div class="right-image">
+    <div class="card-category absolute" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <div id="age-stars">
+        <h5>placeholder age</h5>
+        <ul class="list-inline">
+          <li>
+            <h6><i class="far fa-star"></i></h6>
+          </li>
+        </ul>
       </div>
-      <button>
-      <%= link_to 'Book this friend', new_friend_friendship_path(@friend) %>
-
-      </div>
+    </div>
   </div>
 
 </div>
+
+
+<div class="parent-container">
+  <div class="container">
+    <div class="left-description-section">
+      <div class="about-section">
+        <h4>About</h4>
+      </div>
+      <div class="left-description">
+        <h5>Description</h5>
+        <p>
+          <%= @friend.large_description %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="right-booking">
+      <div class="booking-box">
+        <h4>
+          Book a Friend Details
+        </h4>
+        <div class="booking-description-section">
+          <div class="description-left">
+            <ul class="list-inline">
+              <li>
+                <h5>$$$......</h5>
+              </li>
+              <li>
+                <h5>Per Hour</h5>
+              </li>
+            </ul>
+           </div>
+         </div>
+         <%= link_to "Book Friend", new_friend_friendship_path(@friend), class: "btn btn-flat" %>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+
+<!--   <div class="main-flexbox">
+
+    <div class="first-flex-text">
+
+      <div class="mini-flexbox-name">
+
+        <h2 class="first-name-space"><%= @user_friend.first_name %></h2>
+
+        <h2> <%= @user_friend.last_name %> </h2>
+      </div>
+      <p><strong>Short Description</strong>
+        <%= @user_friend.short_description %></p>
+        <p><strong>Long Description</strong>
+          <p><%= @friend.large_description %></p>
+    </div>
+
+        <div class="flex-item-2">
+          <%= cl_image_tag @user_friend.avatar.url %>
+        </div>
+
+        <div class="container" id="image-block">
+          <div class="row">
+           <% @friend.photos.each do |photo| %>
+            <%= cl_image_tag photo.picture, height: 100, width: 200,  crop: :fill %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+      <%= link_to 'Book this friend', new_friend_friendship_path(@friend) %>
+  </div> -->
+

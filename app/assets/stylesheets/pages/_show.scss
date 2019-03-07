@@ -1,26 +1,129 @@
-.main-flexbox{
+// .main-flexbox{
+//   display: flex;
+//   width: 100% !important;
+//   height: 100% !important;
+//   position: absolute !important;
+//   padding: 40px !important;
+
+
+// }
+
+// .first-flex-text{
+//   flex: 50%;
+// }
+
+// .avatr {
+//  width: 400px;
+//  height: 300px;
+//  background-size: cover;
+// }
+
+
+// .mini-flexbox-name{
+//   display: flex;
+// }
+
+// .first-name-space {
+//   padding-right: 10px
+// }
+
+// .flex-item-2 {
+//   display: flex;
+// }
+
+// .container > #image-block{
+//   padding: 0px 9px 4px;
+// }
+
+.banner-container{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #1EDD88;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: #1BCB7F;
+  color: white;
+}
+
+
+.left-image{
+  display: flex-start;
+  width: 40%;
+  margin-left: 15px;
+  margin-right: 10px;
+  box-shadow: 9px 13px 16px -10px rgba(0,0,0,0.48);
+}
+
+.right-image{
+  display: flex-end;
+  width: 60%;
+  margin-right: 15px;
+  box-shadow: 9px 13px 16px -10px rgba(0,0,0,0.48);
+
+}
+
+.list-inline{
+  margin-bottom: 0px;
+}
+
+h5 {
+  margin-bottom: 0px;
+}
+
+.absolute{
+  position: relative;
+    #age-stars{
+    padding-left: 10px;
+    left : 10px;
+    bottom: 10px;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: absolute;
+}
+}
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
   display: flex;
-
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
 }
 
-.first-flex-text{
-  flex: 50%;
+.parent-container{
+  display:flex;
 }
 
-.avatr {
- width: 400px;
- height: 300px;
- background-size: cover;
+.right-booking {
+  background-color: #ffffff;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 8px;
+  position: sticky !important;
 }
 
-.flexbox-show{
-  flex-wrap: wrap;
+.container {
+  margin-top: 40px;
 }
 
-.mini-flexbox-name{
-  display: flex;
-}
 
-.first-name-space {
-  padding-right: 10px
-}
+
+
