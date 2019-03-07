@@ -1,12 +1,15 @@
 <div class="navbar-wagon <%= 'navbar-fixed' if home_page? %>">
   <!-- Logo -->
+
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <% if home_page? %>
-  <%= image_tag "ourlogo.png", height: 50 %>
-  <% else %>
-  <%= image_tag "ourlogo-dark.png", height: 50 %>
+    <% if home_page? %>
+      <%= image_tag "ourlogo.png", height: 50 %>
+    <% else %>
+      <%= image_tag "ourlogo-dark.png", height: 50 %>
+    <% end %>
   <% end %>
-  <% end %>
+
+                           
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">

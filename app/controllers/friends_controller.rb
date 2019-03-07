@@ -14,13 +14,31 @@ class FriendsController < ApplicationController
   end
 
   def index
-    friends = Friend.joins(:user).where('users.language = ?', params[:option].downcase)
-    @friends = friends.near(params[:location], 10)
+    if params[:location] && params[:option]
+      params[:option] == "All" ? friends = Friend.all : friends = Friend.joins(:user).where('users.language = ?', params[:option].downcase)
+      @friends = friends.near(params[:location], 10)
+    else
+      @friends = Friend.all
+    end
   end
 
   def show
     @friend = Friend.find(params[:id])
     @user_friend = User.find(@friend.user_id)
+  end
+
+  def edit
+    @friend = Friend.find(params[:id])
+  end
+
+  def update
+    @friend = Friend.find(params[:id])
+    @friend.update(set_params)
+    if @friend.save
+      redirect_to profile_path
+    else
+      render :edit
+    end
   end
 
   private

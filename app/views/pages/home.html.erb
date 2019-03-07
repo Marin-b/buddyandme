@@ -9,28 +9,12 @@
 
     <div class="searchbar">
       <%= form_tag((friends_path), method: "get", :html => {class: "form-inline" }) do %>
-        <%= text_field_tag :location, "",id: "location-field" %>
-        <%= select_tag(:option, options_for_select(%w(english french dutch spanish italian german japanese).map { |x| x.capitalize }, params[:option] )) %>
+        <%= text_field_tag :location, nil, :placeholder => " City", id: "location-field" %>
+        <%= select_tag(:option, options_for_select(%w(english french dutch spanish italian german japanese all).map { |x| x.capitalize }, params[:option] ))  %>
         <%= submit_tag 'Search', class: "btn btn-danger" %>
       <% end %>
-
-      <!-- <form class="form-inline">
-        <input type="text" class="form-control" id="location-field" placeholder="Location">
-        <select class="form-control" id="select-language">
-          <option id="language-dropdown" selected>Language</option>
-          <option>English</option>
-          <option>French</option>
-          <option>Spanish</option>
-          <option>Italian</option>
-          <option>Dutch</option>
-          <option>German</option>
-          <option>Japanese</option>
-        </select>
-        <%= link_to friends_path do %>
-          <button type="button" class="btn btn-danger">Search</button>
-        <% end %>
-      </form> -->
     </div>
+     <%= link_to "See all friends", friends_path, class: "btn btn-success" %>
   </div>
 </div>
 
