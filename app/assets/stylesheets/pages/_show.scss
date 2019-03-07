@@ -37,8 +37,9 @@
 
 .banner-container{
   display:flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 
@@ -58,21 +59,24 @@
 
 .left-image{
   display: flex-start;
-  width: 40%;
+  width: 30%;
   margin-left: 15px;
   margin-right: 10px;
   box-shadow: 9px 13px 16px -10px rgba(0,0,0,0.48);
+  position: relative;
   text-align: center
 }
 
-.right-image{
-  display: flex-end;
-  width: 60%;
+.right-container{
+  width: 70%;
   margin-right: 15px;
   box-shadow: 9px 13px 16px -10px rgba(0,0,0,0.48);
-
+  border-radius: 10px;
 }
-
+.avatar-show {
+  background-size: cover;
+  background-position: center;
+}
 .list-inline{
   margin-bottom: 0px;
 }
@@ -80,31 +84,25 @@
 h5 {
   margin-bottom: 0px;
 }
-
+.absolute-bottom-left {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
 .absolute{
   position: relative;
-  #age-stars{
-    padding-left: 10px;
-    left : 10px;
-    bottom: 10px;
-    justify-content: space-between;
-    align-items: flex-end;
-    position: absolute;
-  }
 }
 
 .card-category {
   background-size: cover;
   background-position: center;
-  height: 300px;
-  display: flex;
-  justify-content: center;
+  height: 400px;
   align-items: center;
   color: white;
   font-size: 24px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .parent-container{
@@ -130,7 +128,26 @@ h5 {
 .container {
   margin-top: 40px;
 }
+.rows {
+  height: 50%;
+  width: 100%;
+  margin: 0px;
+  display: flex;
+  border-radius: 10px;
+}
 
+.friend-image {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.default-image {
+  background-image: url('default_image.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .bottom-list {
   margin-bottom: 40px;
 }
@@ -158,6 +175,20 @@ h5 {
   flex-grow: 1;
 }
 
+.border-radius-bottom-left{
+  border-radius: 0px 0px 0px 10px
+}
+.border-radius-bottom-right{
+  border-radius: 0px 0px 10px 0px
+}
+.border-radius-top-left{
+  border-radius: 10px 0px 0px 0px
+}
+
+
+.border-radius-top-right{
+  border-radius: 0px 10px 0px 0px
+}
 
 // reviews section
 .avatar-large {
@@ -207,5 +238,6 @@ h5 {
 .notification .notification-actions a:hover {
   color: #555555;
 }
+
 
 

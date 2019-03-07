@@ -1,23 +1,49 @@
-
 <div class="banner-container">
   <div class="left-image">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <div class="card-category avatar-show" style="background-image: url('<%= cl_image_path @user_friend.avatar.url %>')">
+
+    <!-- "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%#= cl_image_tag @user_friend.avatar.url %>')"> -->
       <div>
-        <h3 class="name-space">Hi, my name is </h3>
-        <h4><%= @user_friend.first_name %> <%= @user_friend.last_name%></h4>
+        <div class="absolute-bottom-left">
+          <h3 class="name-space">Hi, my name is </h3>
+          <h4><%= @user_friend.first_name %> <%= @user_friend.last_name%></h4>
+        </div>
       </div>
     </div>
   </div>
-  <div class="right-image">
-    <div class="card-category absolute" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      <div id="age-stars">
-        <h5>placeholder age</h5>
-        <ul class="list-inline">
-          <li>
-            <h6><i class="far fa-star"></i></h6>
-          </li>
-        </ul>
-      </div>
+
+  <div class="right-container card-category">
+    <div class="rows">
+      <% if @friend.photos.first %>
+        <div class="friend-image border-radius-top-left" style="background-image: url('<%= cl_image_path @friend.photos.first.picture.url %>'); border-radius: 10px">
+        </div>
+      <% else %>
+        <div class="friend-image default-image border-radius-top-left" ">
+        </div>
+      <% end %>
+      <% if @friend.photos[1] %>
+        <div class="friend-image border-radius-top-right" style="background-image: url('<%= cl_image_path @friend.photos[1].picture.url %>');">
+        </div>
+      <% else %>
+        <div class="friend-image default-image border-radius-top-right">
+        </div>
+      <% end %>
+    </div>
+    <div class="rows">
+      <% if @friend.photos[2] %>
+        <div class="friend-image border-radius-bottom-left" style="background-image: url('<%= cl_image_path @friend.photos[2].picture.url %>')">
+        </div>
+      <% else %>
+        <div class="friend-image default-image border-radius-bottom-left">
+        </div>
+      <% end %>
+      <% if @friend.photos[3] %>
+        <div class="friend-image border-radius-bottom-right" style="background-image: url('<%= cl_image_path @friend.photos[3].picture.url %>')">
+        </div>
+      <% else %>
+        <div class="friend-image default-image border-radius-bottom-right">
+        </div>
+      <% end %>
     </div>
   </div>
 
@@ -37,6 +63,7 @@
           <%= @friend.large_description %>
         </p>
       </div>
+
       <div class="reviews-section">
         <h5>Reviews</h5>
         <div class="notification">
@@ -71,7 +98,7 @@
         <div class="description-left">
           <ul class="list-inline bottom-list">
             <li>
-              <h5>$$$....</h5>
+              <h5><%= @friend.price_per_hour %>€</h5>
             </li>
             <li>
               <h5>Per Hour</h5>
@@ -83,6 +110,5 @@
     </div>
   </div>
 </div>
-
 
 
