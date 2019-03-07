@@ -23,6 +23,13 @@ class FriendsController < ApplicationController
     @user_friend = User.find(@friend.user_id)
   end
 
+  def edit
+    @friend = Friend.find(params[:id])
+  end
+
+  def update
+
+  end
   private
 
   def set_params
