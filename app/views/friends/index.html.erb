@@ -1,17 +1,21 @@
-<div class="flexbox">
-  <% @friends.each do |friend| %>
-  <%= link_to friend_path(friend) do %>
-    <div class="cards">
-      <div class="picture" style="background-image: url('<%= cl_image_path User.find(friend.user_id).avatar.url %>')">
+<div class="container-paulus">
+  <div class="row">
+    <% @friends.each do |friend| %>
+    <div class="col-xs-12 col-sm-4">
+    <%= link_to friend_path(friend) do %>
+      <div class="cards">
+        <div class="picture" style="background-image: url('<%= cl_image_path User.find(friend.user_id).avatar.url %>')">
+        </div>
+        <h2>
+          <%= User.find(friend.user_id).first_name %>
+        </h2>
+        <h4>
+          <%= User.find(friend.user_id).birth_date %>
+        </h4>
+        <p> <%= User.find(friend.user_id).short_description %> </p>
       </div>
-      <h2>
-        <%= User.find(friend.user_id).first_name %>
-      </h2>
-      <h3>
-        <%= User.find(friend.user_id).birth_date %>
-      </h3>
-      <p> <%= User.find(friend.user_id).short_description %> </p>
     </div>
-    <% end %>
-  <% end %>
+      <% end %>
+      <% end %>
+  </div>
 </div>
