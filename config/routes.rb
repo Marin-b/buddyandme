@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :delete]
   end
 
-
   get "profile", to: "profile#show", as: :profile
 
   delete "delete_photo/:id", to: "photos#destroy", as: :destroy_photo

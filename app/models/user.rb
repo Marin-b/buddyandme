@@ -10,6 +10,9 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :birth_date, :short_description, presence: true
   validates :language, inclusion: { in: %w(english french dutch spanish italian german japanese) }
   after_create :assign_avatar
+def age
+   ((Time.zone.now - birth_date.to_time) / 1.year.seconds).floor
+ end
 
   def assign_avatar
     if self.avatar.filename.nil?
@@ -24,6 +27,27 @@ class User < ApplicationRecord
 
   def full_name
     self.first_name + " " + self.last_name
+  end
+
+  def update_with_password(params, *options)
+    current_password = params.delete(:current_password)
+
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+
+    result = if params[:password].blank? || valid_password?(current_password)
+      update_attributes(params, *options)
+    else
+      self.assign_attributes(params, *options)
+      self.valid?
+      self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
+      false
+    end
+
+    clean_up_passwords
+    result
   end
 end
 
