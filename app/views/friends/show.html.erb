@@ -49,12 +49,13 @@
 
 </div>
 
-
 <div class="parent-container">
-  <div class="container">
+  <div class="left-content">
+
+
     <div class="left-description-section">
       <div class="about-section">
-        <h4>About</h4>
+        <h4>About <%= @user_friend.first_name %> </h4>
       </div>
       <div class="left-description">
         <h5>Description</h5>
@@ -62,33 +63,52 @@
           <%= @friend.large_description %>
         </p>
       </div>
+
+      <div class="reviews-section">
+        <h5>Reviews</h5>
+        <div class="notification">
+          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
+          <div class="notification-content">
+            <p><small>14th January</small></p>
+            <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
+          </div>
+        </div>
+
+        <div class="notification">
+          <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
+          <div class="notification-content">
+            <p><small>9th January</small></p>
+            <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-map">
+      <div class="map-image" >
+      </div>
     </div>
   </div>
 
-
-  <div class="container">
-    <div class="right-booking">
-      <div class="booking-box">
-        <h4>
-          Book a Friend Details
-        </h4>
-        <div class="booking-description-section">
-          <div class="description-left">
-            <ul class="list-inline">
-              <li>
-                <h5><%= @friend.price_per_hour %> €</h5>
-              </li>
-              <li>
-                <h5>Per Hour</h5>
-              </li>
-            </ul>
-           </div>
-         </div>
-         <%= link_to "Book Friend", new_friend_friendship_path(@friend), class: "btn btn-flat" %>
-       </div>
-     </div>
-   </div>
- </div>
+  <div class="right-booking">
+    <div class="booking-box">
+      <h4>
+        Book a Friend Details
+      </h4>
+      <div class="booking-description-section">
+        <div class="description-left">
+          <ul class="list-inline bottom-list">
+            <li>
+              <h5><%= @friend.price_per_hour %>€</h5>
+            </li>
+            <li>
+              <h5>Per Hour</h5>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <%= link_to "Book Friend", new_friend_friendship_path(@friend), class: "btn btn-flat" %>
+    </div>
+  </div>
 </div>
 
 
