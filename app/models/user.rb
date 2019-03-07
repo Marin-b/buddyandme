@@ -10,6 +10,9 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :birth_date, :short_description, presence: true
   validates :language, inclusion: { in: %w(english french dutch spanish italian german japanese) }
   after_create :assign_avatar
+def age
+   ((Time.zone.now - birth_date.to_time) / 1.year.seconds).floor
+ end
 
   def assign_avatar
     if self.avatar.filename.nil?
