@@ -32,6 +32,12 @@ class FriendsController < ApplicationController
     }
   end
 
+  def destroy
+    @friend = Friend.find(params[:id])
+    @friend.destroy
+    redirect_to profile_path
+  end
+
   def edit
     @friend = Friend.find(params[:id])
   end
