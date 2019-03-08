@@ -65,9 +65,9 @@
       <% @friend.photos.each do |photo| %>
         <div class="col-xs-12 col-sm-6">
           <div class="card-profile-photo" style="background-image: url('<%= cl_image_path photo.picture.url %>')">
-            <%= link_to destroy_photo_path(photo) do %>
-              <i class=“far fa-times-circle”></i>
-            <% end %>
+          <%= link_to destroy_photo_path(photo) do %>
+            <i class="far fa-times-circle delete-icon"></i>
+          <% end %>
           </div>
         </div>
       <% end %>

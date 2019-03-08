@@ -5,7 +5,13 @@ class PhotosController < ApplicationController
   end
 
   def create
-    redirect_to new_friend_photo_path(current_user) if params[:photo].nil?
+    if params[:photo].nil? && params["commit"] != "Done"
+      redirect_to new_friend_photo_path(current_user)
+      return
+    elsif params[:photo].nil? && params["commit"] == "Done"
+      redirect_to friend_path(current_user.friend)
+      return
+    end
     @photo = Photo.new(set_params)
     @photo.friend_id = current_user.friend.id
     if @photo.save
@@ -16,8 +22,9 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-    @photo.find(params[:id])
+    @photo = Photo.find(params[:id])
     @photo.destroy
+    redirect_to profile_path
   end
 
   private
