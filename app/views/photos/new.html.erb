@@ -1,13 +1,35 @@
-<h2>Add a picture</h2>
-
-<%= simple_form_for [@friend, @photo] do |f| %>
+<div class="container-photo">
+  <h2>Add your pictures</h2>
+  <%= simple_form_for [@friend, @photo] do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
     <%= f.input :picture,
-                required: true%>
+    required: true,
+    input_html: {class: "on_the_input"},
+    wrapper_html: {class: "on_the_wrapper"},
+    label_html: {class: "on_the_label"},
+    label: false
+    %>
   </div>
   <div class="form-actions">
-    <%= f.button :submit, "Add another picture", name: "Add" %>
+    <%= f.button :submit, "Add a picture", name: "Add" %>
     <%= f.button :submit, "Done" %>
   </div>
-<% end %>
+  <% end %>
+
+    <div class="row">
+      <% @friend.photos.each do |photo| %>
+        <div class="col-xs-12 col-sm-6 card_photo" style="background-image: url('<%= cl_image_path photo.picture.url %>');background-size: cover; height: 200px; width: 200px; background-repeat: none">
+        </div>
+      <% end %>
+    </div>
+</div>
+
+
+<!-- cl_image_path photo_picture.url
+-->
+
+
+<!-- image_tag <img src="" alt="">
+image_path = http://www.mzirl.asdf.jpg
+ -->
