@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get "profile", to: "profile#show", as: :profile
 
-  delete "delete_photo/:id", to: "photos#destroy", as: :destroy_photo
+  get "delete_photo/:id", to: "photos#destroy", as: :destroy_photo
 
   get "delete_friendship/:id", to: "friendships#destroy", as: :destroy_friendship
   get "accept/:id", to: "friendships#accept", as: :accept
