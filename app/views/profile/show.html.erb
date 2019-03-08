@@ -102,31 +102,31 @@
 
         <div class="friendship-status">
           <% if friendship.status == "Pending" %>
-          <h4 class="grey-text">
-            Status: <%= friendship.status %>
-          </h4>
+            <h4 class="grey-text">
+              Status: <%= friendship.status %>
+            </h4>
           <% elsif friendship.status == "Accepted" %>
-          <h4 class="green-text">
-            Status: <%= friendship.status %>
-          </h4>
+            <h4 class="green-text">
+              Status: <%= friendship.status %>
+            </h4>
           <% elsif friendship.status == "Declined" %>
-          <h4 class="red-text">
-            Status: <%= friendship.status %>
-          </h4>
+            <h4 class="red-text">
+              Status: <%= friendship.status %>
+            </h4>
           <% elsif friendship.status == "Completed" %>
-          <h4 class="orange-text">
-            Status: <%= friendship.status %>
-          </h4>
-          <%= link_to "Write a review" %>
+            <h4 class="orange-text">
+              Status: <%= friendship.status %>
+            </h4>
+            <%= link_to "Write a review", friend_path(friendship.friend_id, friendship: friendship) %>
           <% end %>
         </div>
+        </div>
+        <%=  link_to destroy_friendship_path(friendship) do %>
+          <i class="far fa-times-circle"></i>
+        <% end %>
       </div>
-      <%=  link_to destroy_friendship_path(friendship) do %>
-      <i class="far fa-times-circle"></i>
-      <% end %>
     </div>
-  </div>
-  <hr>
+    <hr>
   <% end %>
 
 

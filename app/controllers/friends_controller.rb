@@ -25,6 +25,7 @@ class FriendsController < ApplicationController
   def show
     @friend = Friend.find(params[:id])
     @user_friend = User.find(@friend.user_id)
+    @friendship = Friendship.find(params[:friendship]) if params[:friendship]
     @markers = {
       lng: @friend.longitude,
       lat: @friend.latitude

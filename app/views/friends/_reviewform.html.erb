@@ -1,0 +1,6 @@
+<%= simple_form_for [friendship, review] do |f| %>
+  <%= f.label :rating %>
+  <%= f.select :rating, (0..5) %>
+  <%= f.input :description %>
+  <%= f.submit :submit %>
+<% end %>

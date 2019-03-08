@@ -68,6 +68,7 @@
       <hr/>
       <div class="reviews-section">
         <h4>Reviews</h4>
+
         <div class="notification">
           <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
           <div class="notification-content">
@@ -83,8 +84,15 @@
             <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
           </div>
         </div>
+
+      <% if @friendship %>
+        <div class="notification">
+          <%= render 'reviewform', review: Review.new, friendship: @friendship  %>
+        </div>
+      <% end %>
       </div>
     </div>
+
     <div class="container-map">
       <div
       id="map"
