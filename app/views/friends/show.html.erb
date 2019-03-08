@@ -68,22 +68,27 @@
       <hr/>
       <div class="reviews-section">
         <h4>Reviews</h4>
+      <% @friend.friendships.each do |friendship| %>
+        <% if friendship.review %>
+          <% review = friendship.review %>
+          <div class="notification">
+            <img src= '<%= User.find(friendship.user_id).avatar.url %>' class="avatar-large"/>
+            <div class="notification-content">
+              <div class="date-rating">
+              <p><small> <%= review.created_at %> </small></p>
+              </div>
 
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>14th January</small></p>
-            <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
-          </div>
-        </div>
+              <div class="date-rating">
+                <% review.rating.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+              </div>
 
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>9th January</small></p>
-            <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
+              <p><%= review.description %></p>
+            </div>
           </div>
-        </div>
+        <% end %>
+      <% end %>
 
       <% if @friendship %>
         <div class="notification">

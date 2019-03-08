@@ -99,7 +99,6 @@
         <h4>
           Price: € <%= friendship.total_price %>
         </h4>
-
         <div class="friendship-status">
           <% if friendship.status == "Pending" %>
             <h4 class="grey-text">
@@ -117,17 +116,20 @@
             <h4 class="orange-text">
               Status: <%= friendship.status %>
             </h4>
-            <%= link_to "Write a review", friend_path(friendship.friend_id, friendship: friendship) %>
+            <% unless friendship.review %>
+              <%= link_to "Write a review", friend_path(friendship.friend_id, friendship: friendship), class: 'btn-danger btn' %>
+            <% end %>
           <% end %>
         </div>
         </div>
         <%=  link_to destroy_friendship_path(friendship) do %>
           <i class="far fa-times-circle"></i>
         <% end %>
-      </div>
     </div>
-    <hr>
-  <% end %>
+  </div>
+</div>
+<hr>
+<% end %>
 
 
 

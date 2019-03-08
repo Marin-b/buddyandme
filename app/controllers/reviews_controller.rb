@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     # 1. if the status of the friendship is completed, then the user is able to write a review
     # 2 check if the user actually is the user that also was part fo fthat friendhsip
 
-    if @friendship.user_id == current_user.id && @friendship.status == "completed"
+    if @friendship.user_id == current_user.id && @friendship.status == "Completed"
       @review.friendship_id = @friendship.id
       if @review.save
         redirect_to profile_path
@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
         render :new
       end
     else
-      flash[:alert] = "wegwezen jij"
+      flash[:alert] = "You're not allowed to write this review!"
       redirect_to profile_path
     end
   end

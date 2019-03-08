@@ -1,40 +1,3 @@
-// .main-flexbox{
-//   display: flex;
-//   width: 100% !important;
-//   height: 100% !important;
-//   position: absolute !important;
-//   padding: 40px !important;
-
-
-// }
-
-// .first-flex-text{
-//   flex: 50%;
-// }
-
-// .avatr {
-//  width: 400px;
-//  height: 300px;
-//  background-size: cover;
-// }
-
-
-// .mini-flexbox-name{
-//   display: flex;
-// }
-
-// .first-name-space {
-//   padding-right: 10px
-// }
-
-// .flex-item-2 {
-//   display: flex;
-// }
-
-// .container > #image-block{
-//   padding: 0px 9px 4px;
-// }
-
 .left-description{
   margin-top: 20px;
 }
@@ -59,6 +22,16 @@ hr {
   margin-top: 10px;
 }
 
+.fas {
+    padding: 9px;
+    padding-top: 9px;
+    padding-right: 9px;
+    padding-bottom: 9px;
+    padding-left: 9px;
+    color: #f5e92f;
+    border-radius: 2px;
+    background-color: transparent;
+}
 
 .btn-flat {
   color: white;
@@ -268,5 +241,7 @@ h5 {
   color: #555555;
 }
 
-
+.date-rating {
+  display: flex;
+}
 
