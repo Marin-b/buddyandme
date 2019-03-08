@@ -89,7 +89,9 @@
                 <h4 class="orange-text">
                   Status: <%= friendship.status %>
                 </h4>
-                <%= link_to "Write a review", friend_path(friendship.friend_id, friendship: friendship) %>
+                <% unless friendship.review %>
+                  <%= link_to "Write a review", friend_path(friendship.friend_id, friendship: friendship), class: 'btn-danger btn' %>
+                <% end %>
               <% end %>
             </div>
             </div>
