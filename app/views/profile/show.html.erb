@@ -9,143 +9,178 @@
         <h2>
           <%= @user.first_name %>
           <%= @user.last_name  %>,
-           <%= @user.age  %>
+          <%= @user.age  %>
         </h2>
       </div>
       <div class="description">
        <h4> My tagline:  <%= @user.short_description %> </h4>
-      </div>
-      <div class="edit-profile">
-        <%= link_to "Edit my profile", edit_user_registration_path %>
-      </div>
+     </div>
+     <div class="edit-profile">
+      <%= link_to "Edit my profile", edit_user_registration_path %>
     </div>
+  </div>
 
-    <div class="friend">
-      <h2> Your Friend profile</h2>
-      <div class="row">
+  <div class="friend">
+    <h2> Your Friend profile</h2>
+    <div class="row">
       <% if (@friend) %>
+        <% if @friend.photos[1].nil?  %>
+          <div class="col-xs-12 col-sm-6">
+            <div class="card-profile-photo" style="background-image: url('https://images.unsplash.com/photo-1519518892892-85f4ba0b2e2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
+            </div>
+          </div>
+        <% end %>
 
-        <% @friend.photos.each do |photo| %>
+        <% if @friend.photos[0].nil?  %>
+          <div class="col-xs-12 col-sm-6">
+            <div class="card-profile-photo" style="background-image: url('https://images.unsplash.com/photo-1519518892892-85f4ba0b2e2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
+            </div>
+          </div>
+        <% end %>
+
+        <% if @friend.photos[2].nil?  %>
+          <div class="col-xs-12 col-sm-6">
+            <div class="card-profile-photo" style="background-image: url('https://images.unsplash.com/photo-1519518892892-85f4ba0b2e2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
+            </div>
+          </div>
+        <% end %>
+
+        <% if @friend.photos[2].nil?  %>
+          <div class="col-xs-12 col-sm-6">
+            <div class="card-profile-photo" style="background-image: url('https://images.unsplash.com/photo-1519518892892-85f4ba0b2e2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
+            </div>
+          </div>
+        <% end %>
+
+      <% @friend.photos.each do |photo| %>
         <div class="col-xs-12 col-sm-6">
           <div class="card-profile-photo" style="background-image: url('<%= cl_image_path photo.picture.url %>')">
           </div>
         </div>
-        <% end %>
-        </div>
-          <div class="description">
-          <h4><%= @friend.large_description %></h4>
-          <p>📍 My location is <%= @friend.location %>        , Price per hour is € <%= @friend.price_per_hour %> 💰 </p>
-            <div class="edit-description">
-            <%= link_to "Edit my description", edit_friend_path(@friend) %>
-            </div>
-          </div>
-      <% else %>
+      <% end %>
+    </div>
+
+    <div class="description">
+      <h4><%= @friend.large_description %></h4>
+      <p>📍 My location is <%= @friend.location %>        , Price per hour is € <%= @friend.price_per_hour %> 💰 </p>
+      <div class="edit-description">
+        <%= link_to "Edit my description", edit_friend_path(@friend) %>
+      </div>
+    </div>
+    <% else %>
+    <div>
+      <h3> You don't have a friend profile yet</h3>
+      <%= link_to "Become friendly now!", new_friend_path %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="bookings">
+  <div class="user-bookings">
+    <h2>Wanted friendships</h2>
+    <% @user.friendships.each do |friendship| %>
+    <% the_friend = User.find(Friend.find(friendship.friend_id).user_id) %>
+    <div class="card-booking">
+      <div class="card-flexbox">
         <div>
-        <h3> You don't have a friend profile yet</h3>
-        <%= link_to "Become friendly now!", new_friend_path %>
+          <h4>
+            Asking for a friendship with:
+          </h4>
+          <h4>
+            <%= the_friend.full_name %>
+          </h4>
         </div>
-      <% end %>
+        <h4>
+          From: <%=friendship.start_hour%>:00 <%= Date.parse(friendship.start_datetime.to_s).strftime("%d/%m/%Y") %> <br> Until:  <%=friendship.end_hour%>:00 <%= Date.parse(friendship.end_datetime.to_s).strftime("%d/%m/%Y") %>
+        </h4>
+
+        <h4>
+          Price: € <%= friendship.total_price %>
+        </h4>
+
+        <div class="friendship-status">
+          <% if friendship.status == "Pending" %>
+            <h4 class="grey-text">
+              Status: <%= friendship.status %>
+            </h4>
+          <% elsif friendship.status == "Accepted" %>
+            <h4 class="green-text">
+              Status: <%= friendship.status %>
+            </h4>
+          <% elsif friendship.status == "Declined" %>
+            <h4 class="red-text">
+              Status: <%= friendship.status %>
+            </h4>
+          <% elsif friendship.status == "Completed" %>
+            <h4 class="orange-text">
+              Status: <%= friendship.status %>
+            </h4>
+            <%= link_to "Write a review", friend_path(friendship.friend_id, friendship: friendship) %>
+          <% end %>
+        </div>
+        </div>
+        <%=  link_to destroy_friendship_path(friendship) do %>
+          <i class="far fa-times-circle"></i>
+        <% end %>
+      </div>
     </div>
-  </div>
-
-
-  <div class="bookings">
-    <div class="user-bookings">
-      <h2>Wanted friendships</h2>
-      <% @user.friendships.each do |friendship| %>
-        <% the_friend = User.find(Friend.find(friendship.friend_id).user_id) %>
-        <div class="card-booking">
-          <div class="card-flexbox">
-            <div>
-              <h4>
-                Asking for a friendship with:
-              </h4>
-              <h4>
-                <%= the_friend.full_name %>
-              </h4>
-            </div>
-            <h4>
-              From: <%=friendship.start_hour%>:00 <%= Date.parse(friendship.start_datetime.to_s).strftime("%d/%m/%Y") %> <br> Until:  <%=friendship.end_hour%>:00 <%= Date.parse(friendship.end_datetime.to_s).strftime("%d/%m/%Y") %>
-            </h4>
-
-            <h4>
-              Price: € <%= friendship.total_price %>
-            </h4>
-
-            <div class="friendship-status">
-              <% if friendship.status == "Pending" %>
-                <h4 class="grey-text">
-                  Status: <%= friendship.status %>
-                </h4>
-              <% elsif friendship.status == "Accepted" %>
-                <h4 class="green-text">
-                  Status: <%= friendship.status %>
-                </h4>
-              <% elsif friendship.status == "Declined" %>
-                <h4 class="red-text">
-                  Status: <%= friendship.status %>
-                </h4>
-              <% elsif friendship.status == "Completed" %>
-                <h4 class="orange-text">
-                  Status: <%= friendship.status %>
-                </h4>
-                <%= link_to "Write a review", friend_path(friendship.friend_id, friendship: friendship) %>
-              <% end %>
-            </div>
-            </div>
-            <%=  link_to destroy_friendship_path(friendship) do %>
-              <i class="far fa-times-circle"></i>
-            <% end %>
-          </div>
-        </div>
-        <hr>
-      <% end %>
+    <hr>
+  <% end %>
 
 
 
-    <div class="friend-bookings">
-      <h2>Hosted friendships</h2>
-      <% @user.friend.friendships.each do |friendship| %>
-        <% the_friend = User.find(friendship.user_id) %>
-        <div class="card-booking">
-          <div class="card-flexbox">
-            <div>
-              <h4>
-                Hosting a friendship for:
-              </h4>
-              <h4>
-                <%= the_friend.full_name %>
-              </h4>
-            </div>
-            <h4>
-              From: <%=friendship.start_hour%>:00 <%= Date.parse(friendship.start_datetime.to_s).strftime("%d/%m/%Y") %> <br> Until:  <%=friendship.end_hour%>:00 <%= Date.parse(friendship.end_datetime.to_s).strftime("%d/%m/%Y") %>
-            </h4>
-            <h4>
-              Price: € <%= friendship.total_price %>
-            </h4>
-            <div class="friendship-status">
-              <% if friendship.status == "Pending" %>
-                <h4 class="greyer-text">
-                  Status: <%= friendship.status %>
-                </h4>
-                <div class="status-buttons">
-                  <%= link_to "Accept", accept_path(friendship), class: "acceptbutton" %>
-                  <%= link_to "Decline", decline_path(friendship), class: "declinebutton" %>
-                </div>
-              <% elsif friendship.status == "Accepted" %>
-                <h4 class="green-text">
-                  Status: <%= friendship.status %>
-                </h4>
-              <% elsif friendship.status == "Declined" %>
-                <h4 class="red-text">
-                  Status: <%= friendship.status %>
-                </h4>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <hr>
-      <% end %>
+  <div class="friend-bookings">
+    <h2>Hosted friendships</h2>
+    <% if current_user.friend.nil? %>
+    <div>
+      <h3> You don't have a friend profile yet</h3>
+      <%= link_to "Become friendly now!", new_friend_path %>
     </div>
+    <% else %>
+    <% @user.friend.friendships.each do |friendship| %>
+    <% the_friend = User.find(friendship.user_id) %>
+    <div class="card-booking">
+      <div class="card-flexbox">
+        <div>
+          <h4>
+            Hosting a friendship for:
+          </h4>
+          <h4>
+            <%= the_friend.full_name %>
+          </h4>
+        </div>
+        <h4>
+          From: <%=friendship.start_hour%>:00 <%= Date.parse(friendship.start_datetime.to_s).strftime("%d/%m/%Y") %> <br> Until:  <%=friendship.end_hour%>:00 <%= Date.parse(friendship.end_datetime.to_s).strftime("%d/%m/%Y") %>
+        </h4>
+        <h4>
+          Price: € <%= friendship.total_price %>
+        </h4>
+        <div class="friendship-status">
+          <% if friendship.status == "Pending" %>
+          <h4 class="greyer-text">
+            Status: <%= friendship.status %>
+          </h4>
+          <div class="status-buttons">
+            <%= link_to "Accept", accept_path(friendship), class: "acceptbutton" %>
+            <%= link_to "Decline", decline_path(friendship), class: "declinebutton" %>
+          </div>
+          <% elsif friendship.status == "Accepted" %>
+          <h4 class="green-text">
+            Status: <%= friendship.status %>
+          </h4>
+          <% elsif friendship.status == "Declined" %>
+          <h4 class="red-text">
+            Status: <%= friendship.status %>
+          </h4>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+    <hr>
   </div>
+</div>
 </div>
