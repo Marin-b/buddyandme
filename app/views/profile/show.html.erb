@@ -2,21 +2,23 @@
   <div class="container">
 
     <div class="profile">
-      <h2> Your profile</h2>
-      <div class="profile-avatar" style="background-image: url('<%= cl_image_path current_user.avatar.url %>')">
+      <div class="centeredprofile">
+        <h2> Your profile</h2>
+        <div class="profile-avatar" style="background-image: url('<%= cl_image_path current_user.avatar.url %>')">
+        </div>
+        <div class="full-name-age">
+          <h2>
+            <%= @user.first_name %>
+            <%= @user.last_name  %>,
+            <%= @user.age  %>
+          </h2>
+        </div>
+        <div class="description">
+         <h4> My tagline:  <%= @user.short_description %> </h4>
+       </div>
+       <div class="edit-profile">
+        <%= link_to "Edit my profile", edit_user_registration_path %>
       </div>
-      <div class="full-name-age">
-        <h2>
-          <%= @user.first_name %>
-          <%= @user.last_name  %>,
-          <%= @user.age  %>
-        </h2>
-      </div>
-      <div class="description">
-       <h4> My tagline:  <%= @user.short_description %> </h4>
-     </div>
-     <div class="edit-profile">
-      <%= link_to "Edit my profile", edit_user_registration_path %>
     </div>
   </div>
 
@@ -25,27 +27,33 @@
     <div class="row">
       <% if (@friend) %>
         <% if @friend.photos[1].nil?  %>
-          <div class="col-xs-12 col-sm-6">
-            <div class="card-profile-photo" style="background-image: url('https://images.unsplash.com/photo-1519518892892-85f4ba0b2e2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
+          <%= link_to  new_friend_photo_path(@friend) do %>
+            <div class="col-xs-12 col-sm-6">
+              <div class="card-profile-photo" style="background-image: url('https://images.unsplash.com/photo-1519518892892-85f4ba0b2e2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
 
         <% if @friend.photos[0].nil?  %>
-          <div class="col-xs-12 col-sm-6">
-            <div class="card-profile-photo" style="background-image: url('https://images.unsplash.com/photo-1519518892892-85f4ba0b2e2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
+          <%= link_to  new_friend_photo_path(@friend) do %>
+            <div class="col-xs-12 col-sm-6">
+              <div class="card-profile-photo" style="background-image: url('https://images.unsplash.com/photo-1519518892892-85f4ba0b2e2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
 
         <% if @friend.photos[2].nil?  %>
-          <div class="col-xs-12 col-sm-6">
-            <div class="card-profile-photo" style="background-image: url('https://images.unsplash.com/photo-1519518892892-85f4ba0b2e2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
+          <%= link_to  new_friend_photo_path(@friend) do %>
+            <div class="col-xs-12 col-sm-6">
+              <div class="card-profile-photo" style="background-image: url('https://images.unsplash.com/photo-1519518892892-85f4ba0b2e2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
 
-        <% if @friend.photos[2].nil?  %>
+        <% if @friend.photos[3].nil?  %>
           <%= link_to  new_friend_photo_path(@friend) do %>
             <div class="col-xs-12 col-sm-6">
               <div class="card-profile-photo" style="background-image: url('https://images.unsplash.com/photo-1519518892892-85f4ba0b2e2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')">
@@ -68,8 +76,15 @@
     <div class="description">
       <h4><%= @friend.large_description %></h4>
       <p>📍 My location is <%= @friend.location %>        , Price per hour is € <%= @friend.price_per_hour %> 💰 </p>
-      <div class="edit-description">
+      <div>
+        <h5 class="edit-description">
+          <div class="linkclass">
         <%= link_to "Edit my description", edit_friend_path(@friend) %>
+        </div>
+        <div class="linkclass">
+        <%= link_to "View my friendpage", friend_path(@friend) %>
+        </div>
+        </h5>
       </div>
     </div>
     <% else %>
@@ -126,15 +141,14 @@
             <% end %>
           <% end %>
         </div>
-        </div>
         <%=  link_to destroy_friendship_path(friendship) do %>
           <i class="far fa-times-circle"></i>
         <% end %>
     </div>
+    <hr>
+    <% end %>
   </div>
-</div>
-<hr>
-<% end %>
+
 
 
 
@@ -189,5 +203,4 @@
     <% end %>
     <hr>
   </div>
-</div>
 </div>
