@@ -1,6 +1,7 @@
 <p class="hidden price_per_hour"><%= @friend.price_per_hour %></p>
 <%= simple_form_for [@friend, @friendship] do |f| %>
   <%= f.error_notification %>
+  <div class="container-friend">
   <div class="form-inputs" style="width:50vw">
       <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
 
@@ -18,3 +19,4 @@
 <% end %>
 <button class="visuPrice">Visualize cost</button>
 <h2 class="displayPrice"></h2>
+</div>
