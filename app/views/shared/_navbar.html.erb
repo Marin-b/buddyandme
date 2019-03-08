@@ -20,12 +20,9 @@
 
     <!-- Links when logged in -->
     <% if home_page? %>
-    <%= link_to "Become friendly", new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Become friendly", new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% else %>
-    <%= link_to "Become friendly", new_friend_path, class: "navbar-wagon-item navbar-wagon-link navbar-links-not-home" %>
-    <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link navbar-links-not-home" %>
-
+      <%= link_to "Become friendly", new_friend_path, class: "navbar-wagon-item navbar-wagon-link navbar-links-not-home" %>
     <% end %>
 
     <!-- Avatar with dropdown menu -->
@@ -39,11 +36,6 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "#" do %>
-            <i class="fa fa-cog"></i> <%= t(".settings", default: "Settings") %>
-            <% end %>
-          </li>
-          <li>
             <%= link_to destroy_user_session_path, method: :delete do %>
             <i class="fa fa-sign-out"></i> <%= t(".sign_out", default: "Log out") %>
             <% end %>
@@ -54,11 +46,11 @@
     <% else %>
     <!-- Login link (when logged out) -->
     <% if home_page? %>
-    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to t(".sign_up", default: "Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_up", default: "Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% else %>
-    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link navbar-links-not-home" %>
-    <%= link_to t(".sign_up", default: "Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link navbar-links-not-home" %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link navbar-links-not-home" %>
+      <%= link_to t(".sign_up", default: "Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link navbar-links-not-home" %>
     <% end %>
 
 

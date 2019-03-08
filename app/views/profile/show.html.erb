@@ -24,8 +24,8 @@
 
   <div class="friend">
     <h2> Your Friend profile</h2>
-    <div class="row">
-      <% if (@friend) %>
+    <% if (@friend) %>
+      <div class="row">
         <% if @friend.photos[1].nil?  %>
           <%= link_to  new_friend_photo_path(@friend) do %>
             <div class="col-xs-12 col-sm-6">
@@ -62,36 +62,36 @@
           <% end %>
         <% end %>
 
-      <% @friend.photos.each do |photo| %>
-        <div class="col-xs-12 col-sm-6">
-          <div class="card-profile-photo" style="background-image: url('<%= cl_image_path photo.picture.url %>')">
-          <%= link_to destroy_photo_path(photo) do %>
-            <i class="far fa-times-circle delete-icon"></i>
-          <% end %>
+        <% @friend.photos.each do |photo| %>
+          <div class="col-xs-12 col-sm-6">
+            <div class="card-profile-photo" style="background-image: url('<%= cl_image_path photo.picture.url %>')">
+            <%= link_to destroy_photo_path(photo) do %>
+              <i class="far fa-times-circle delete-icon"></i>
+            <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="description">
-      <h4><%= @friend.large_description %></h4>
-      <p>📍 My location is <%= @friend.location %>        , Price per hour is € <%= @friend.price_per_hour %> 💰 </p>
-      <div>
-        <h5 class="edit-description">
-          <div class="linkclass">
-        <%= link_to "Edit my description", edit_friend_path(@friend) %>
-        </div>
-        <div class="linkclass">
-        <%= link_to "View my friendpage", friend_path(@friend) %>
-        </div>
-        </h5>
+        <% end %>
       </div>
-    </div>
+
+      <div class="description">
+        <h4><%= @friend.large_description %></h4>
+        <p>📍 My location is <%= @friend.location %>        , Price per hour is € <%= @friend.price_per_hour %> 💰 </p>
+        <div>
+          <h5 class="edit-description">
+            <div class="linkclass">
+          <%= link_to "Edit my description", edit_friend_path(@friend) %>
+          </div>
+          <div class="linkclass">
+          <%= link_to "View my friendpage", friend_path(@friend) %>
+          </div>
+          </h5>
+        </div>
+      </div>
     <% else %>
-    <div>
-      <h3> You don't have a friend profile yet</h3>
-      <%= link_to "Become friendly now!", new_friend_path %>
-    </div>
+      <div>
+        <h3> You don't have a friend profile yet</h3>
+        <%= link_to "Become friendly now!", new_friend_path %>
+      </div>
     <% end %>
   </div>
 </div>
