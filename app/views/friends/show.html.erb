@@ -5,8 +5,7 @@
     <!-- "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%#= cl_image_tag @user_friend.avatar.url %>')"> -->
       <div>
         <div class="absolute-bottom-left">
-          <h3 class="name-space">Hi, my name is </h3>
-          <h4><%= @user_friend.first_name %> <%= @user_friend.last_name%></h4>
+          <h2 class="name-space"> <%= @user_friend.first_name %> <%= @user_friend.last_name%>, <%= @user_friend.age %> </h2>
         </div>
       </div>
     </div>
