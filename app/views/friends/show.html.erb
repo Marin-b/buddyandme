@@ -15,7 +15,7 @@
   <div class="right-container card-category">
     <div class="rows">
       <% if @friend.photos.first %>
-        <div class="friend-image border-radius-top-left" style="background-image: url('<%= cl_image_path @friend.photos.first.picture.url %>'); border-radius: 10px">
+        <div class="friend-image border-radius-top-left" style="background-image: url('<%= cl_image_path @friend.photos.first.picture.url %>')">
         </div>
       <% else %>
         <div class="friend-image default-image border-radius-top-left" ">
@@ -63,8 +63,11 @@
           <%= @friend.large_description %>
         </p>
       </div>
+
+
+      <hr/>
       <div class="reviews-section">
-        <h5>Reviews</h5>
+        <h4>Reviews</h4>
         <div class="notification">
           <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
           <div class="notification-content">
