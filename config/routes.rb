@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :friendships, only: [:new, :create]
   end
   resources :friendships, only: [] do
-    resources :reviews, only: [:new, :create, :delete]
+    resources :reviews, only: [:new, :create]
   end
 
   get "profile", to: "profile#show", as: :profile
