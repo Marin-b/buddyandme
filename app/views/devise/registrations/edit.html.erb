@@ -1,63 +1,67 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <div class="signupcontainer">
+      <div class="formground">
+    <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-  <% if resource.errors.any? %>
-    <div class="errors-container">
-      <ul>
-        <% resource.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+      <% if resource.errors.any? %>
+        <div class="errors-container">
+          <ul>
+            <% resource.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      wrapper_html: {class: "around"},
+                      input_html: { autocomplete: "email" },
+                      label: "My Email Address" %>
+          <%= f.input :avatar, label: "My favourite profile pic" %>
+          <%= f.input :avatar_cache, as: :hidden,
+                      wrapper_html: {class: "around"} %>
+          <br>
+          <%= f.input :first_name,
+                      required: true,
+                      wrapper_html: {class: "around"},
+                      label: "My First Name" %>
+          <%= f.input :last_name,
+                      required: true,
+                      wrapper_html: {class: "around"},
+                      label: "My Last Name" %>
+          <%#= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" },
+                      wrapper_html: {class: "around"} %>
+          <%#= f.input :password_confirmation,
+                      required: true,
+                      wrapper_html: {class: "around"},
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :birth_date, as: :date, html5: true, label:"I was born on:",
+          wrapper_html: {class: "around"} %>
+          <%= f.label "I speak:" %>
+          <br>
+          <%= f.select :language, %w(english french dutch spanish italian german japanese) %>
+          <br>
+          <br>
+          <%= f.label :"A few things about myself:" %>
+          <br>
+          <%= f.text_area :short_description,
+                      required: true, wrapper_html: {class: "around"} %>
+          <br>
+          <%= f.submit "Edit my profile!", class: "btn btn-danger" %>
+          <%= link_to "Back", :back %>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  wrapper_html: {class: "around"},
-                  input_html: { autocomplete: "email" },
-                  label: "My Email Address" %>
-      <%= f.input :avatar, label: "My favourite profile pic" %>
-      <%= f.input :avatar_cache, as: :hidden,
-                  wrapper_html: {class: "around"} %>
-      <br>
-      <%= f.input :first_name,
-                  required: true,
-                  wrapper_html: {class: "around"},
-                  label: "My First Name" %>
-      <%= f.input :last_name,
-                  required: true,
-                  wrapper_html: {class: "around"},
-                  label: "My Last Name" %>
-      <%#= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" },
-                  wrapper_html: {class: "around"} %>
-      <%#= f.input :password_confirmation,
-                  required: true,
-                  wrapper_html: {class: "around"},
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :birth_date, as: :date, html5: true, label:"I was born on:",
-      wrapper_html: {class: "around"} %>
-      <%= f.label "I speak:" %>
-      <br>
-      <%= f.select :language, %w(english french dutch spanish italian german japanese) %>
-      <br>
-      <br>
-      <%= f.label :"A few things about myself:" %>
-      <br>
-      <%= f.text_area :short_description,
-                  required: true, wrapper_html: {class: "around"} %>
-      <br>
-      <%= f.submit "Edit my profile!", class: "btn btn-danger" %>
-    <% end %>
-
+  </div>
+</div>
 <h3>Cancel my account</h3>
+<div class="center-me">
+   <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-unreg" %>
+</div>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

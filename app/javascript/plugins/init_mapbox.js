@@ -1,4 +1,4 @@
-// import mapboxgl from 'mapbox-gl';
+import mapboxgl from 'mapbox-gl';
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -9,28 +9,21 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10'
     });
-  }
-};
-
-if (mapElement) {
-  // [ ... ]
-  const markers = JSON.parse(mapElement.dataset.markers);
-  markers.forEach((marker) => {
+    const marker = JSON.parse(mapElement.dataset.markers);
+    if (marker.lat === null) {
+      return
+    }
     new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map);
-  });
-}
-
-const fitMapToMarkers = (map, markers) => {
-  const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+  fitMapToMarkers(map, marker);
+  }
 };
 
-if (mapElement) {
-  // [ ... ]
-  fitMapToMarkers(map, markers);
-}
+const fitMapToMarkers = (map, marker) => {
+  const bounds = new mapboxgl.LngLatBounds();
+  bounds.extend([ marker.lng, marker.lat ]);
+  map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+};
 
 export { initMapbox };
