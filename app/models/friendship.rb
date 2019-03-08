@@ -1,7 +1,7 @@
 class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend
-  has_one :review
+  has_one :review,  dependent: :destroy
 
   validates :start_date, :end_date, :start_hour, :end_hour, presence: true
 

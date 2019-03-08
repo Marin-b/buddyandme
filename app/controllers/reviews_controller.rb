@@ -14,13 +14,13 @@ class ReviewsController < ApplicationController
     if @friendship.user_id == current_user.id && @friendship.status == "Completed"
       @review.friendship_id = @friendship.id
       if @review.save
-        redirect_to profile_path
+        redirect_to friend_path(@friendship.friend_id)
       else
         render :new
       end
     else
       flash[:alert] = "You're not allowed to write this review!"
-      redirect_to profile_path
+      redirect_to friend_path(@friendship.friend_id)
     end
   end
 
